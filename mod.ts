@@ -7,6 +7,8 @@ app.use((context) => {
   context.response.body = `Hello World!`;
 });
 
-app.listen({
-  port: PORT,
-});
+if (import.meta.main) {
+  app.listen({
+    port: PORT,
+  });
+}
