@@ -12,6 +12,7 @@ app.use(async (ctx, next) => {
   const start = Date.now();
   await next();
   const end = Date.now() - start;
+  ctx.response.headers.set("X-Response-Time", `${end}ms`);
 });
 
 app.use((ctx) => {
