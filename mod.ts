@@ -8,6 +8,12 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.request.method} ${ctx.request.url}`);
 });
 
+app.use(async (ctx, next) => {
+  const start = Date.now();
+  await next();
+  const end = Date.now() - start;
+});
+
 app.use((ctx) => {
   ctx.response.body = `Hello World!`;
 });
