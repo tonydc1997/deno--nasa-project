@@ -5,6 +5,7 @@ const PORT = 8000;
 
 app.use(async (ctx, next) => {
   await next();
+  console.log(`${ctx.request.method} ${ctx.request.url}`);
 });
 
 app.use((ctx) => {
