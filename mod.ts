@@ -31,10 +31,6 @@ app.use(async (ctx) => {
   }
 });
 
-app.use((ctx) => {
-  ctx.response.body = `Hello World!`;
-});
-
 if (import.meta.main) {
   app.listen({
     port: PORT,
