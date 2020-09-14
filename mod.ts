@@ -15,7 +15,7 @@ app.use(async (ctx, next) => {
   ctx.response.headers.set("X-Response-Time", `${end}ms`);
 });
 
-app.use((ctx) => {
+app.use(async (ctx) => {
   const filePath = ctx.request.url.pathname;
   const fileWhiteList = [
     "/index.html",
