@@ -43,6 +43,17 @@ function submitLaunch() {
   const mission = document.getElementById("mission-name").value;
   const rocket = document.getElementById("rocket-name").value;
   const flightNumber = launches[launches.length - 1]?.flightNumber + 1 || 1;
+  const customers = ["NASA", "ZTM"];
+
+  launches.push({
+    target,
+    launchDate: launchDate / 1000,
+    mission,
+    rocket,
+    flightNumber,
+    customers,
+    upcoming: true,
+  });
 
   // TODO: Once API is ready.
   // Submit above data to launch system and reload launches.
@@ -89,7 +100,7 @@ function navigate(navigateTo) {
     .forEach((page) => {
       document.getElementById(page).hidden = true;
     });
-  document.getElementById("launch-success").hidden = true;
+  document.getElementById("launch-success").hidden = false;
 
   if (navigateTo === "upcoming") {
     loadLaunches();
