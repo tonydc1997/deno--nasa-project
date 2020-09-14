@@ -20,7 +20,6 @@ function loadLaunches() {
 }
 
 function loadPlanets() {
-  // TODO: Once API is ready.
   const planets = [
     { kepler_name: "Beta Gamma B" },
     { kepler_name: "Beta Gamma Alpha" },
