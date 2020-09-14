@@ -4,12 +4,12 @@ const router = new Router();
 
 router.get("/", (ctx) => {
   ctx.response.body = `
-  ___
+          ___
     |     | |
-   / \    | |
+   / \\    | |
   |--o|===|-|
   |---|   |d|
- /     \  |w|
+ /     \\  |w|
 | U     | |b|
 | S     |=| |
 | A     | | |
