@@ -1,4 +1,4 @@
-let launches;
+let launches = [];
 
 const numberHeading = "No.".padStart(5);
 const dateHeading = "Date".padEnd(15);
