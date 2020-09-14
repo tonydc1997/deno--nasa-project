@@ -1,4 +1,4 @@
-import { Application } from "https://deno.land/x/oak@v6.0.1/mod.ts";
+import { Application, send } from "https://deno.land/x/oak@v6.0.1/mod.ts";
 
 const app = new Application();
 const PORT = 8000;
@@ -13,6 +13,10 @@ app.use(async (ctx, next) => {
   await next();
   const end = Date.now() - start;
   ctx.response.headers.set("X-Response-Time", `${end}ms`);
+});
+
+app.use((ctx) => {
+  await send(ctx, filePath, {});
 });
 
 app.use((ctx) => {
