@@ -16,6 +16,14 @@ app.use(async (ctx, next) => {
 });
 
 app.use((ctx) => {
+  const filePath = ctx.request.url.pathname;
+  const fileWhiteList = [
+    "/index.html",
+    "/stylesheets/style.css",
+    "/images/favicon.png",
+    "/javascripts/script.js",
+  ];
+
   await send(ctx, filePath, {});
 });
 
