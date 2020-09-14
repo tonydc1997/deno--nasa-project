@@ -23,3 +23,5 @@ This ASCII pic can be found at
 https://asciiart.website/index.php?art=transportation/space%20ships
 `;
 });
+
+export default router;
