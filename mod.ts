@@ -1,4 +1,5 @@
-import { Application } from "https://deno.land/x/oak@v6.0.1/mod.ts";
+import { Application, send } from "https://deno.land/x/oak@v6.0.1/mod.ts";
+import router from "./api.ts";
 
 const app = new Application();
 const PORT = 8000;
@@ -15,8 +16,22 @@ app.use(async (ctx, next) => {
   ctx.response.headers.set("X-Response-Time", `${end}ms`);
 });
 
-app.use((ctx) => {
-  ctx.response.body = `Hello World!`;
+app.use(router.routes());
+
+app.use(async (ctx) => {
+  const filePath = ctx.request.url.pathname;
+  const fileWhiteList = [
+    "/index.html",
+    "/stylesheets/style.css",
+    "/images/favicon.png",
+    "/javascripts/script.js",
+  ];
+
+  if (fileWhiteList.includes(filePath)) {
+    await send(ctx, filePath, {
+      root: `${Deno.cwd()}/public`,
+    });
+  }
 });
 
 if (import.meta.main) {
